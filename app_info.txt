@@ -1,0 +1,31 @@
+users can create task such as get/buy 
+
+
+- Create task   
+    - Sell Something
+    - Buy Something: Something you're in need of
+    
+    Task(Details to be documented for Task creation):
+        - Room Number
+        - Detailed Location
+        - Item
+        - Action:   
+            - Buy (Task creator wants to buy something like food; get it at the stipulated price)
+            - Sell (Task creator wants to sell something, come get it from me at the stipulated price)
+        - Quantity(Number of Item)
+        - Price Offer
+
+other users can then search for pending tasks and attend to them
+
+Instances:
+    (Buying instance)
+    - Aloha wants to buy beloved but is too lazy to go out as usual, creates a Task, 
+      the attract people and If they like the offer(the stipulated cash price), 
+      they accept and deliver, then receive payment after delivery/on-delivery
+      The Task workers also has a choice of increasing the stipulated cash if not
+      satisfied
+    (Selling instance)
+    - Enoch has extra PC RAMs and wants to sell some, creates at Task that attracts people,
+      As usual, the attracted folks and ask for a deduction in price, If i say no, then 
+      the stipulated price stands and whoever is capacable prolly comes around and gets
+      the RAM
