@@ -11,6 +11,12 @@ class Task(models.Model):
         ('s', 'sell')
     )
 
+    STATUSES = (
+        ('p', 'pending'),
+        ('c', 'completed'),
+        ('a', 'accepted'),
+    )
+
     item = models.CharField(max_length=300, help_text="Item to Collect/Buy/Get")
     quantity = models.IntegerField(help_text="Item Quantity")
     price_offer = models.FloatField(help_text="Item Price")
@@ -19,6 +25,7 @@ class Task(models.Model):
     room_no = models.CharField("Room No for delivery", max_length=5) 
     detailed_location = models.CharField("Further details", max_length=300)
     action_hint = models.CharField("Further details on action", max_length=300)
+    status = models.CharField(choices=STATUSES, default='p', help_text="Set the status of Task: Pending/Completed/Accepted")
     # cascade means, if u delete the ref user then, the task should also be deleted
     user = models.ForeignKey(User, verbose_name="Task Creator", on_delete=models.CASCADE, null=True)
     date_created = models.DateTimeField(auto_now=True)
@@ -68,6 +75,19 @@ class Task(models.Model):
             self.date_created = timezone.now()
         return super(Task, self).save(*args, **kwargs)
 
-
     class Meta:
         ordering = ['-date_created'] # from newest to oldest
+
+
+class AcceptedTaskList(models.Model):
+    # To keep track of all accepted task by a user
+    # prevent user from being deleted until is either fulfilled or 
+    # accepted task is removed manually
+    user = models.OneToOneField(User, on_delete=models.RESTRICT)
+    tasks = models.ManyToManyField(Task)
+    # don't allow users to accept already accepted tasks - block it in the frontend
+
+    def __str__(self):
+        return f'{self.user.username} has {self.tasks.Count()}'
+
+    

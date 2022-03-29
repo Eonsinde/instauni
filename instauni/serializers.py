@@ -18,3 +18,10 @@ class TaskSerializer(serializers.ModelSerializer):
         # use the UserSerializer class later 
         fields = ('item', 'quantity', 'price_offer', 'action', 'user', 'get_existence_duration')
 
+
+class AcceptedTaskListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AcceptedTaskList
+        fields = ('tasks')
+        exclude = ['user']
+

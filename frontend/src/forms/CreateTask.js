@@ -28,7 +28,7 @@ const CreateTask = () => {
                             <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Item'/>
                         </div>
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
-                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Price Offer'/>
+                            <input type='number' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Price Offer'/>
                         </div>
                         <button type='submit' className='bg-green-500 text-white p-3 rounded-md shadow-sm focus:ring-4 focus:ring-green-200'>Create Task</button>
                     </form>

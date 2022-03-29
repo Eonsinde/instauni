@@ -11,6 +11,13 @@ import CreateTask from './forms/CreateTask';
 import Register from './forms/Register';
 import Login from './forms/Login';
 
+import Dashboard from './layout/Dashboard/Dashboard';
+import Profile from './layout/Dashboard/Profile';
+import Wallet from './layout/Dashboard/Wallet';
+import TaskHistory from './layout/Dashboard/TaskHistory';
+import TasksMonitor from './layout/Dashboard/TasksMonitor';
+
+
 function App() {
   return (
     <>
@@ -38,21 +45,52 @@ function App() {
             </>
           } />
 
-           <Route path='/create-task' element={
+          <Route path='/create-task' element={
             <>
               <Header />
               <CreateTask />
             </>
           } />
 
-           <Route path='/login' element={
+          {/* Components rendered with Dashboard Comp */}
+          <Route path='/profile' element={
+            <>
+              <Header />
+              <Dashboard Component={Profile} />
+            </>
+          } />
+
+          <Route path='/wallet' element={
+            <>
+              <Header />
+              <Dashboard Component={Wallet} />
+            </>
+          } />
+
+          <Route path='/monitor-tasks' element={
+            <>
+              <Header />
+              <Dashboard Component={TasksMonitor} />
+            </>
+          } />
+
+          <Route path='/history' element={
+            <>
+              <Header />
+              <Dashboard Component={TaskHistory} />
+            </>
+          } />
+
+
+          {/* Auth aspects */}
+          <Route path='/login' element={
             <>
               <Header />
               <Login />
             </>
           } />
 
-           <Route path='/register' element={
+          <Route path='/register' element={
             <>
               <Header />
               <Register />
