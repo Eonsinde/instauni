@@ -20,4 +20,7 @@ class TaskViewSets(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
+# class AcceptedTaskList
+
+
 

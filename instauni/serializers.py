@@ -20,8 +20,8 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
 class AcceptedTaskListSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = AcceptedTaskList
-        fields = ('tasks')
-        exclude = ['user']
+        fields = ('tasks', 'user')
 
