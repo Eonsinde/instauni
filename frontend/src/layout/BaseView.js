@@ -13,7 +13,7 @@ import Register from '../forms/Register';
 import PageNotFound from './PageNotFound';
 
 
-const GenericView = () => {
+const BaseView = () => {
     return ( 
         <>
             <Header />
@@ -31,6 +31,7 @@ const GenericView = () => {
                 {/* Auth aspects */}
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
+                {/* Dashboard/Components to be rendered in dashboard */}
                 <Route path='dashboard/*' element={<Dashboard />} />
                 
                 <Route path='*' element={<PageNotFound />} />
@@ -39,4 +40,4 @@ const GenericView = () => {
     );
 }
  
-export default GenericView;
+export default BaseView;

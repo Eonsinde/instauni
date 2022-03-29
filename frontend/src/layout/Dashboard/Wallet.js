@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 const Wallet = () => {
     return ( 
-        <div className='flex flex-col space-y-10'>
-           <div className=''>
+        <div className='wallect-section flex flex-col space-y-10'>
+           <div className='wallet-header'>
                 <header className='flex justify-between align-center mb-4'>
                     <p>Balance</p>
                     <Link to='#' className='text-green-500'>Fund Account</Link>
                 </header>
                 <h2 className='text-3xl'>P. 3550 (#3550)</h2>
            </div>
-           <div className=''>
+           <div className='wallet-body'>
                 <header className='flex justify-between align-center mb-4'>
                     <p>Recents</p>
                     <Link to='#' className='text-green-500'>View More</Link>

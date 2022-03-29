@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const TaskHistory = () => {
     return ( 
         <>
-            <div className=''>
+            <div className='history-section'>
                 <table class="table-auto mt-5 mb-7 w-full">
                     <thead>
                         <tr>

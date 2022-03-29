@@ -13,24 +13,24 @@ const CreateTask = () => {
                 <div className='basis-full'>
                     <form onSubmit={e => e.preventDefault()} className='flex flex-col px-2 w-10/12 md:w-8/12 lg:w-5/12 mx-auto'> 
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
-                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Full Name' />
+                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200 transition ease-in-out delay-150' placeholder='Full Name' />
                         </div>
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
-                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Room Number For Delivery' />
+                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200 transition ease-in-out delay-150' placeholder='Room Number For Delivery' />
                         </div>
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
-                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Detailed Location' />
+                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200 transition ease-in-out delay-150' placeholder='Detailed Location' />
                         </div>
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
-                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Buy/Collect/Get' />
+                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200 transition ease-in-out delay-150' placeholder='Buy/Collect/Get' />
                         </div>
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
-                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Item'/>
+                            <input type='text' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200 transition ease-in-out delay-150' placeholder='Item'/>
                         </div>
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
-                            <input type='number' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200' placeholder='Price Offer'/>
+                            <input type='number' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200 transition ease-in-out delay-150' placeholder='Price Offer'/>
                         </div>
-                        <button type='submit' className='bg-green-500 text-white p-3 rounded-md shadow-sm focus:ring-4 focus:ring-green-200'>Create Task</button>
+                        <button type='submit' className='bg-green-500 text-white p-3 rounded-md shadow-sm focus:ring-4 focus:ring-green-200 transition ease-in-out delay-150'>Create Task</button>
                     </form>
                 </div>
             </div>
