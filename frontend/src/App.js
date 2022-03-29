@@ -12,10 +12,6 @@ import Register from './forms/Register';
 import Login from './forms/Login';
 
 import Dashboard from './layout/Dashboard/Dashboard';
-import Profile from './layout/Dashboard/Profile';
-import Wallet from './layout/Dashboard/Wallet';
-import TaskHistory from './layout/Dashboard/TaskHistory';
-import TasksMonitor from './layout/Dashboard/TasksMonitor';
 
 
 function App() {
@@ -30,7 +26,7 @@ function App() {
             </>
           } />
 
-          <Route path='/home' element={
+          <Route path='home' element={
             <>
               <Header />
               <Test />
@@ -38,14 +34,14 @@ function App() {
             </>
           } />
 
-          <Route path='/objectives' element={
+          <Route path='objectives' element={
             <>
               <Header />
               <Objectives />
             </>
           } />
 
-          <Route path='/create-task' element={
+          <Route path='create-task' element={
             <>
               <Header />
               <CreateTask />
@@ -53,14 +49,10 @@ function App() {
           } />
 
           {/* Components rendered with Dashboard Comp */}
-          <Route path='/profile' element={
-            <>
-              <Header />
-              <Dashboard Component={Profile} />
-            </>
-          } />
+          {/* <Route path='dashboard/*' element={<Dash />} /> */}
+          <Route path='dashboard/*' element={<><Header /><Dashboard /></>} />
 
-          <Route path='/wallet' element={
+          {/* <Route path='/wallet' element={
             <>
               <Header />
               <Dashboard Component={Wallet} />
@@ -79,7 +71,7 @@ function App() {
               <Header />
               <Dashboard Component={TaskHistory} />
             </>
-          } />
+          } /> */}
 
 
           {/* Auth aspects */}

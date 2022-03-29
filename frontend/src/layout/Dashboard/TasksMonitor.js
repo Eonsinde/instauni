@@ -14,7 +14,7 @@ const TasksMonitor = () => {
                         <button className='bg-gray-100 text-gray-800 p-2 rounded-md'>Duration</button>
                     </div>
                 </header>
-                <table class="table-auto mt-5 mb-7 w-full">
+                <table class="table-auto mt-8 w-full">
                     <thead>
                         <tr>
                             <th className='text-left'>Date</th>
@@ -52,7 +52,6 @@ const TasksMonitor = () => {
                         </tr>
                     </tbody>
                 </table>
-                <Link to='#' className='text-green-500 inline'>Get Free Money</Link>
            </div>
         </>
     );
