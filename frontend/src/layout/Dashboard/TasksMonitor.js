@@ -7,10 +7,10 @@ const TasksMonitor = () => {
         <>
             <div className=''>
                 <header className='flex justify-between align-center mb-4'>
-                    <Link to='#' className='text-green-500'>Filter</Link>
+                    <p className='text-green-500 text-lg'>Filter</p>
                     <div className='filter-options flex space-x-2'>
                         <button className='bg-gray-100 text-gray-800 p-2 rounded-md'>Status</button>
-                        <button className='bg-gray-100 text-gray-800 p-2 rounded-md'>Action</button>
+                        <button className='bg-gray-100 text-gray-800 p-2 rounded-md'>Price</button>
                         <button className='bg-gray-100 text-gray-800 p-2 rounded-md'>Duration</button>
                     </div>
                 </header>
