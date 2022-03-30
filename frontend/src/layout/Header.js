@@ -4,6 +4,8 @@ import { BsPersonCircle } from 'react-icons/bs'
 import { IoIosArrowDown } from 'react-icons/io'
 
 
+// Note: add quick links for navigation to pages like Objectives
+
 const Header = () => {
     let [user, setUser] = useState({
         username: "Eonsinde",
@@ -12,9 +14,9 @@ const Header = () => {
     })
 
     return (  
-        <header className="py-16">
-            <div className='container mx-auto flex justify-center items-center relative'>
-                <Link to='/' className='text-gray-800 text-5xl font-semibold'>Insta<span className="text-green-500">life</span></Link>
+        <header style={{...styles.header}} className="">
+            <div className='container h-full mx-auto flex justify-center items-center relative'>
+                <Link to='/home' className='text-gray-800 text-5xl font-semibold'>Insta<span className="text-app-green">life</span></Link>
                 {
                     !user.isAuth
                     ?
@@ -30,6 +32,12 @@ const Header = () => {
             </div>
         </header>
     );
+}
+
+const styles = {
+    header: {
+        height: '18vh'
+    }
 }
  
 export default Header;
