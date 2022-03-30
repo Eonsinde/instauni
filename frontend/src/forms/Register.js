@@ -37,8 +37,8 @@ const Register = () => {
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
                             <input type='password' className='p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 focus:ring-4 focus:ring-gray-200 transition ease-in-out delay-150' placeholder='Confirm Password'/>
                         </div>
-                        <button type='submit' className='bg-green-500 text-white p-3 rounded-md shadow-sm focus:ring-4 focus:ring-green-200 transition ease-in-out delay-150'>Register</button>
-                        <p className='text-center mt-7 md:mt-3 lg:mt-6'>Already Registered? <Link to='/login' className='text-green-500'>Sign In</Link></p>
+                        <button type='submit' className='bg-app-green text-white p-3 rounded-md shadow-sm focus:ring-4 focus:ring-green-200 transition ease-in-out delay-150'>Register</button>
+                        <p className='text-center mt-7 md:mt-3 lg:mt-6'>Already Registered? <Link to='/login' className='text-app-green'>Sign In</Link></p>
                     </form>
                 </div>
             </div>
