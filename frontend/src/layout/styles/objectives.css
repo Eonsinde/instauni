@@ -1,0 +1,37 @@
+.obj-wrapper{
+    /* background: #23b12396; */
+    height: 45pc;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* padding: 0.5rem 1rem; */
+}
+
+@media screen and (max-width: 768px) {
+    .obj-wrapper{
+        height: 50pc;
+    }
+}
+
+
+/* for the scroll bar */
+/* width */
+.obj-wrapper::-webkit-scrollbar {
+    width: 6px;
+    transition: .5s ease;
+}
+  
+/* Track */
+.obj-wrapper::-webkit-scrollbar-track {
+    background: #e7e7e7; 
+}
+   
+/* Handle */
+.obj-wrapper::-webkit-scrollbar-thumb {
+    background: rgb(99, 99, 99); 
+}
+  
+/* Handle on hover */
+.obj-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+  

@@ -1,0 +1,31 @@
+.tasks-wrapper{
+    /* background: red; */
+    height: 82vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem;
+}
+
+
+/* for the scroll bar */
+/* width */
+.tasks-wrapper::-webkit-scrollbar {
+    width: 6px;
+    transition: .5s ease;
+}
+  
+/* Track */
+.tasks-wrapper::-webkit-scrollbar-track {
+    background: #e7e7e7; 
+}
+   
+/* Handle */
+.tasks-wrapper::-webkit-scrollbar-thumb {
+    background: rgb(99, 99, 99); 
+}
+  
+/* Handle on hover */
+.tasks-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+  
