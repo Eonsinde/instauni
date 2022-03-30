@@ -17,7 +17,7 @@ const Wallet = () => {
                     <p>Recents</p>
                     <Link to='#' className='text-green-500'>View More</Link>
                 </header>
-                <table class="table-auto mt-5 mb-7 w-full">
+                <table className="table-auto mt-5 mb-7 w-full">
                     <tbody>
                         <tr>
                             <td>7/4/21</td>
