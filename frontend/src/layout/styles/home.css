@@ -1,0 +1,16 @@
+/* had to implement this manually because of class nam conflict btwn tailwind and bootstrap(text-center) */
+
+.showcase-text{
+    text-align: left;
+}
+
+@media screen and (max-width:768px){
+    .showcase-text{
+        text-align: center;
+    }
+}
+
+.ant-collapse-content {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}

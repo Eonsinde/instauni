@@ -1,0 +1,195 @@
+
+:root{
+    --bg: #fff;
+    --bg-accent: rgb(243, 244, 246);
+    --text-color: #dadce1;
+    --nav-size: 18vh;
+    --border: 1px solid rgb(221, 221, 221);
+    --border-radius: 8px;
+    --speed: 500ms;
+}
+  
+/* ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+  
+a{
+    color: var(--text-color);
+    text-decoration: none;
+} */
+  
+  
+.icon{
+    /* font-size: 1.2rem; */
+    /* --button-size: calc(var(--nav-size) * 0.6); */
+    /* height: var(--button-size); */
+    /* width: var(--button-size); */
+    height: 35px;
+    width: 35px;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.icon-button{
+    /* padding: 0.5rem; */
+    border-radius: 50%;
+    /* background-color: var(--bg-accent); */
+    /* transition: filter 300ms; */
+    /* padding: 0; */
+}
+  
+  a.dropdown-item > .icon-button{
+    margin-right: 10px;
+  }
+  
+  .icon-right{
+  
+  }
+  
+  .icon-button:hover{
+    /* filter: brightness(1.2); */
+  }
+  
+  .dropdown{
+    position: absolute;
+    top: 40px;
+    width: 300px;
+    transform: translateX(-74%);
+    background-color: var(--bg);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    overflow: hidden;
+    transition: height var(--speed) ease;
+  }
+  
+  /* the header for drop down menu if needed */
+  .dropdown-header{
+    height: 50px;
+    display: flex; 
+    align-items: center;
+    border-radius: var(--border-radius);
+    transition: background var(--speed);
+    padding: 0.5rem;
+    /* font-size: 1.2rem; */
+    font-weight: bold;
+    /* color: #fff; */
+  }
+  
+  .dropdown-header > a{
+    margin-right: 10px;
+  }
+  
+  .dropdown-header > p{
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+  }
+  
+  /* the drop down item to toggle app theme - dark/light mode */
+  .dropdown-theme-item{
+    display: flex; 
+    align-items: flex-start;
+    border-radius: var(--border-radius);
+    transition: background var(--speed);
+    padding: 0.5rem;
+    /* font-size: 1.2rem; */
+    /* color: #fff; */
+  }
+  
+  .dropdown-theme-item > p{
+    font-weight: bold;
+  }
+  
+  .dropdown-theme-item > a{
+    /* margin-left: auto; */
+    margin-right: 10px;
+  }
+  
+  .app-theme-form-sect{
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.5rem;
+    border-radius: var(--border-radius);
+  }
+  
+  .app-theme-form-sect:hover{
+    background: var(--bg-accent);
+  }
+  
+  .app-theme-form-sect > input{
+    margin-left: auto;
+  }
+  
+  
+  /* a casual dropdown-item */
+  .dropdown-item{
+    height: 50px;
+    display: flex; 
+    align-items: center;
+    border-radius: var(--border-radius);
+    transition: background var(--speed);
+    padding: 0.5rem;
+  }
+  
+  .dropdown-item:hover{
+    background-color: rgb(243, 244, 246);
+  }
+  
+  /* 
+    Push right icon in dropdown-item to the right 
+    works only if parent is displays flex
+  */
+  .icon-right{
+    margin-left: auto;
+  }
+  
+  
+  /* for CSS transition */
+  .menu{
+    width: 100%;
+  }
+  
+  .menu-primary-enter{
+    position: absolute;
+    transform: translateX(-110%);
+  }
+  
+  .menu-primary-enter-active{
+    transform: translateX(0);
+    transition: all var(--speed) ease;
+  }
+  
+  .menu-primary-exit{
+    position: absolute;
+  }
+  
+  .menu-primary-exit-active{
+    transform: translateX(-110%);
+    transition: all var(--speed) ease;
+  }
+  
+  /* secondary menu */
+  .menu-secondary-enter{
+    position: absolute;
+    transform: translateX(110%);
+  }
+  
+  .menu-secondary-enter-active{
+    transform: translateX(0);
+    transition: all var(--speed) ease;
+  }
+  
+  .menu-secondary-exit{
+    position: absolute;
+  }
+  
+  .menu-secondary-exit-active{
+    transform: translateX(110%);
+    transition: all var(--speed) ease;
+  }
