@@ -5,8 +5,14 @@ import registerImg from '../Assets/images/register.png'
 
 const Register = () => {
     return ( 
-        <section className='py-28'>
-            <div className='container flex justify-center items-center mx-auto h-96'>
+        <>
+        <header style={{height: '18vh'}} className="">
+            <div className='container h-full mx-auto flex justify-center items-center relative'>
+                <Link to='/' className='text-gray-800 text-5xl font-semibold hover:text-gray-800'>Insta<span className="text-app-green">life</span></Link>
+            </div>
+        </header>
+        <section className='h-82vh overflow-hidden'>
+            <div className='container flex justify-center items-center mx-auto'>
                 <div className='hidden md:block md:px-3 md:basis-1/2'>
                     <img className="mx-auto" src={registerImg} alt="" width={'100%'} height={'100%'} />
                 </div>
@@ -43,6 +49,7 @@ const Register = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 }
  
