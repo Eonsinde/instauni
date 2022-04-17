@@ -43,11 +43,11 @@ const DropdownMenu = forwardRef((props, ref) => {
   
     const DropdownItem = (props) => {
       return ( 
-        <a href='#' className='dropdown-item' onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+        <Link to='/dashboard/user/2/profile' className='dropdown-item' onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
           <span className='icon icon-button'>{props.leftIcon}</span>
           {props.children}
           <span className='icon icon-right'>{props.rightIcon}</span>
-        </a>
+        </Link>
       );
     }
   
@@ -152,33 +152,41 @@ const DropdownMenu = forwardRef((props, ref) => {
    
 
 const Header = () => {
-    let [dropdownOpen, setDropdownOpen] = useState(true);
+    let [dropdownOpen, setDropdownOpen] = useState(false);
     let dropdownMenu = React.createRef();
 
     let [user, setUser] = useState({
         username: "Eonsinde",
         isAuth: true,
         email: 'olasinde.eon@gmail.com'
-    })
+    });
 
     useEffect(() => {
-        document.body.onclick = function(){
-            if (dropdownOpen){
-                // dropdownMenu.current.style.display = 'none';
-                // setDropdownOpen(false);
-                if (dropdownMenu.current !== null){
-                    dropdownMenu.current.style.display = 'none';
-                    setDropdownOpen(false);
-                }
-            }
+      const handler = e => {
+        // console.log("Click event", dropdownMenu, dropdownOpen);
+        if (dropdownOpen && dropdownMenu.current !== null && !dropdownMenu.current.contains(e.target)){
+          // console.log("Drop open about to close")
+          // dropdownMenu.current.style.display = 'none';
+          // setDropdownOpen(false);
+          // if menuref not null and clicked on element isn't a child
+          console.log(dropdownMenu.current, dropdownMenu.current.contains(e.target));
+          dropdownMenu.current.style.display = 'none';
+          setDropdownOpen(false);
+          // console.log("Drop closed")
         }
+      }
+      document.body.addEventListener('mousedown', handler);
 
-    }, []);
+      // cleanup
+      // return () => {
+      //   document.body.removeEventListener('mousedown', handler);
+      // }
+    }, [dropdownOpen]);
 
     return (  
         <header style={{...styles.header}} className="">
             <div className='container h-full mx-auto flex justify-center items-center relative'>
-                <Link to='/home' className='text-gray-800 text-5xl font-semibold'>Insta<span className="text-app-green">life</span></Link>
+                <Link to='/' className='text-gray-800 text-5xl font-semibold hover:text-gray-800'>Insta<span className="text-app-green">life</span></Link>
                 {
                     !user.isAuth
                     ?
