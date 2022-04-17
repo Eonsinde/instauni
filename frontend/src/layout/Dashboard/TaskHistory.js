@@ -6,7 +6,7 @@ const TaskHistory = () => {
     return ( 
         <>
             <div className='history-section'>
-                <table class="table-auto mt-5 mb-7 w-full">
+                <table className="table-auto mt-5 mb-7 w-full">
                     <thead>
                         <tr>
                             <th className='text-left'>Date</th>

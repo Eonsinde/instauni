@@ -23,7 +23,7 @@ const Dashboard = () => {
                 <main className='basis-4/5 md:basis-3/5 h-auto'>
                     <Routes>
                         {/* <Route path="user/:id/profile" element={<Profile />} /> */}
-                        <Route path="loader" element={<DashboardLoader />} />
+                        {/* <Route path="loader" element={<DashboardLoader />} /> */}
                         <Route path="user/:id/profile" element={
                             <React.Suspense fallback={<DashboardLoader />}>
                                 <Profile />

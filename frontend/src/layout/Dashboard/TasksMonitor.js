@@ -14,7 +14,7 @@ const TasksMonitor = () => {
                         <button className='bg-gray-100 text-gray-800 p-2 rounded-md'>Duration</button>
                     </div>
                 </header>
-                <table class="table-auto mt-8 w-full">
+                <table className="table-auto mt-8 w-full">
                     <thead>
                         <tr>
                             <th className='text-left'>Date</th>
