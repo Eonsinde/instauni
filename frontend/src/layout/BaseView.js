@@ -1,17 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
 import { AnimatePresence } from 'framer-motion';
 
 import Header from './Header';
 
 // import Dashboard from './Dashboard/Dashboard';
 
-import Login from '../forms/Login';
-import Register from '../forms/Register';
-import PageNotFound from './PageNotFound';
 // import FindTask from './FindTask';
-
+import Home from './Home';
 import PageLoader from '../loaders/PageLoader';
 
 const Objectives = React.lazy(() => import ("./Objectives"));
@@ -27,7 +23,7 @@ const BaseView = () => {
             <Header />
             <AnimatePresence exitBeforeEnter>
                 <Routes>
-                    <Route path="/" element={<>Hello! Welcome to instauni</>} />
+                    <Route path="/" element={<Home />} />
                     <Route path="home" element={
                         <React.Suspense fallback={<PageLoader />}>
                             <Test />
@@ -64,12 +60,6 @@ const BaseView = () => {
                             </React.Suspense>
                         } 
                     />
-
-                    {/* Auth aspects */}
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<Register />} />
-                    
-                    <Route path='*' element={<PageNotFound />} />
                 </Routes>
             </AnimatePresence>
         </>
