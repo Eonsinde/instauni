@@ -3,9 +3,15 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 import datetime, jwt
 from knox.models import AuthToken
-from django.contrib.auth.models import User
+from accounts.models import CustomUser
 from accounts.serializers import *
 
+
+class UserListAPI(generics.ListCreateAPIView):
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return CustomUser.objects.all()
 
 class UserAPI(generics.RetrieveAPIView):
     # permission_classes = [
