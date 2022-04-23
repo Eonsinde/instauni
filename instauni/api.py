@@ -1,13 +1,13 @@
-from rest_framework import viewsets, permissions
-from instauni.serializers import TaskSerializer
+from rest_framework import viewsets, generics, permissions
+from instauni.serializers import *
 from instauni.models import Task
 
 # this is where we write our view sets that will determine what is returned to a user
 
 
-class TaskViewSets(viewsets.ModelViewSet):
+class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = [
-        permissions.IsAuthenticated,
+        # permissions.IsAuthenticated,
     ]
 
     serializer_class = TaskSerializer
@@ -22,5 +22,12 @@ class TaskViewSets(viewsets.ModelViewSet):
 
 # class AcceptedTaskList
 
+class ContactAPI(generics.CreateAPIView):
+    serializer_class = ContactSerializer
 
 
+class FAQAPI(generics.ListAPIView):
+    serializer_class = FAQSerializer
+
+    def get_queryset(self):
+        return FAQ.objects.all()

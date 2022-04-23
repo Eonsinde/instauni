@@ -1,43 +1,29 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.utils import timezone
 
 # Create your models here.
 
 
 class Task(models.Model):
-    ACTIONS = (
-        ('b', 'buy'),
-        ('s', 'sell')
-    )
-
     STATUSES = (
         ('p', 'pending'),
         ('c', 'completed'),
         ('a', 'accepted'),
     )
 
-    item = models.CharField(max_length=300, help_text="Item to Collect/Buy/Get")
-    quantity = models.IntegerField(help_text="Item Quantity")
+    recipient_name = models.CharField(max_length=100, help_text="Person to deliver task to")
+    detail = models.CharField(max_length=500, help_text="Details on task to be performed")
+    delivery_location = models.CharField(max_length=300, help_text='Where to deliver to')
+    item_location = models.CharField(max_length=100, help_text="item's location is needed")
     price_offer = models.FloatField(help_text="Item Price")
-    action = models.CharField(max_length=1, choices=ACTIONS)
-    # newly added
-    room_no = models.CharField("Room No for delivery", max_length=5) 
-    detailed_location = models.CharField("Further details", max_length=300)
-    action_hint = models.CharField("Further details on action", max_length=300)
-    status = models.CharField(choices=STATUSES, default='p', help_text="Set the status of Task: Pending/Completed/Accepted")
+    status = models.CharField(max_length=1, choices=STATUSES, default='p', help_text="Set the status of Task: Pending/Completed/Accepted")
     # cascade means, if u delete the ref user then, the task should also be deleted
-    user = models.ForeignKey(User, verbose_name="Task Creator", on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Task Creator", on_delete=models.CASCADE, null=True)
     date_created = models.DateTimeField(auto_now=True)
 
-
     def __str__(self) -> str:
-        statement: str
-        if self.action == 'b': # buy
-            statement = "needs"
-        else: # sell
-            statement = "wants to sell"
-        return f'{self.user} {statement} {self.item}'
+        return f'{self.detail[:15]} - {self.status}'
 
     @property
     def get_existence_duration(self):
@@ -83,7 +69,7 @@ class AcceptedTaskList(models.Model):
     # To keep track of all accepted task by a user
     # prevent user from being deleted until is either fulfilled or 
     # accepted task is removed manually
-    user = models.OneToOneField(User, on_delete=models.RESTRICT)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)
     tasks = models.ManyToManyField(Task)
     # don't allow users to accept already accepted tasks - block it in the frontend
 
@@ -91,3 +77,18 @@ class AcceptedTaskList(models.Model):
         return f'{self.user.username} has {self.tasks.Count()}'
 
     
+
+class Contact(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=80)
+    title = models.CharField(max_length=100)
+    message = models.TextField(max_length=450)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+
+class FAQ(models.Model):
+    title = models.CharField(max_length=100)
+    body = models.TextField(max_length=450)
