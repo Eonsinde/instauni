@@ -10,11 +10,13 @@ module.exports = {
         'border-dark': 'rgb(88, 88, 88, 0.74)'
       },
       spacing: {
+        '18vh': '18vh',
         '82vh': '82vh',
+        '6vh': '6vh',
         '70vh': '70vh',
         '12vh': '12vh',
-        '100vh': '100vh',
-        '18vh': '18vh',
+        '88vh': '88vh',
+        '100vh': '100vh'
       }
     },
   },
