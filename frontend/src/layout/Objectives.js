@@ -28,7 +28,7 @@ const Objectives = () => {
                             </Link>
                             {/* <BsPlusCircle /> */}
                             <div className='obj-content flex flex-col items-center justify-center mt-8'>
-                                <h4 className='obj-caption text-app-green text-lg mb-3 font-semibold'>Create</h4>
+                                <h4 className='obj-caption text-app-green text-xl mb-3 font-semibold'>Create</h4>
                                 <p className='obj-text'>
                                     Post a microjob for individuals <br/>around the school to find and deliver
                                 </p>
@@ -41,7 +41,7 @@ const Objectives = () => {
                             </Link>
                             {/* <MdOutlineManageSearch className='text-9xl' /> */}
                             <div className='obj-content flex flex-col items-center justify-center mt-8'>
-                                <h4 className='obj-caption text-app-green text-lg mb-3 font-semibold'>Find</h4>
+                                <h4 className='obj-caption text-app-green text-xl mb-3 font-semibold'>Find</h4>
                                 <p className='obj-text'>
                                     Search for microjobs posted<br/> by individuals around the school
                                 </p>
