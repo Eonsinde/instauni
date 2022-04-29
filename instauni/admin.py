@@ -5,3 +5,5 @@ from instauni.models import *
 
 
 admin.site.register(Task)
+admin.site.register(Contact)
+admin.site.register(FAQ)

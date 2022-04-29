@@ -21,7 +21,6 @@ class TaskViewSet(viewsets.ModelViewSet):
 
 
 # class AcceptedTaskList
-
 class ContactAPI(generics.CreateAPIView):
     serializer_class = ContactSerializer
 
