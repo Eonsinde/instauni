@@ -1,10 +1,28 @@
-from rest_framework import generics, permissions    
+from rest_framework import generics, permissions, status    
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 import datetime, jwt
-from knox.models import AuthToken
 from accounts.models import CustomUser
 from accounts.serializers import *
+
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Add custom claims
+        token['username'] = user.username
+        # ...
+
+        return token
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
 class UserListAPI(generics.ListCreateAPIView):
@@ -29,7 +47,7 @@ class UserAPI(generics.RetrieveAPIView):
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed("Unauthenticated!")
         
-        user = User.objects.get(pk=payload.get("id"))
+        user = CustomUser.objects.get(pk=payload.get("id"))
 
         # return Response(
         #     UserSerializer(user).data
@@ -44,15 +62,7 @@ class RegisterAPI(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-        user_token = AuthToken.objects.create(user)
-        token = {
-            'auth_token': user_token[1],
-            'expiry': user_token[0].expiry
-        }
-        return Response({
-            'user': UserSerializer(user, context=self.get_serializer_context()).data,
-            'token': token['auth_token']
-        })
+        return Response(data={"message": "success"}, status=status.HTTP_201_CREATED)
 
 
 class LoginAPI(generics.GenericAPIView):
