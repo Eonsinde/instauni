@@ -21,7 +21,7 @@ const Contact = () => {
     }
 
     const handleSubmit = () => {
-        
+
     }
 
 
@@ -39,8 +39,8 @@ const Contact = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='text' 
-                                onChange={handleChange}
                                 {...RegisterField("full_name", {required: true, maxLength: 50})} 
+                                onChange={handleChange}
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.full_name?.type === 'required' || errors.full_name?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}   
@@ -50,11 +50,11 @@ const Contact = () => {
                         </div>
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
-                                type='email' 
+                                type='text' 
+                                {...RegisterField("email", { pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, required: true })} 
                                 onChange={handleChange}
-                                {...RegisterField("email", {required: true, maxLength: 50})} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
-                                    focus:ring-4 focus:ring-gray-200  ${(errors.email?.type === 'required' || errors.email?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
+                                    focus:ring-4 focus:ring-gray-200  ${(errors.email?.type === 'required' || errors.email?.type === 'pattern') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}    
                                 placeholder="Email *" 
                             />
@@ -63,8 +63,8 @@ const Contact = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='text' 
-                                onChange={handleChange}
                                 {...RegisterField("title", {required: true, maxLength: 50})} 
+                                onChange={handleChange}
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.title?.type === 'required' || errors.title?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}   
@@ -76,8 +76,8 @@ const Contact = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <textarea 
                                 style={{maxHeight:'100px'}}
-                                onChange={handleChange}
                                 {...RegisterField("message", {required: true, maxLength: 50})} 
+                                onChange={handleChange}
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.message?.type === 'required' || errors.message?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}   

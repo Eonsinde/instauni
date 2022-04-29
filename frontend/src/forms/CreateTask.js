@@ -10,7 +10,6 @@ const CreateTask = () => {
         "delivery_location": "",
         "item_location": "",
         "price_offer": 0.0,
-        "status": ""
     });
     
     const { register:RegisterField, handleSubmit:SubmitForm, formState: { errors } } = useForm(); // form validation
@@ -18,7 +17,7 @@ const CreateTask = () => {
     const handleChange = e => {
         setFormData(prevState => ({
             ...prevState,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value.trim()
         }));
     }
 
@@ -40,10 +39,10 @@ const CreateTask = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='text'
-                                onChange={handleChange} 
                                 {...RegisterField("recipient_name", {required: true, maxLength: 50})} 
+                                onChange={handleChange} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
-                                    focus:ring-4 focus:ring-gray-200  ${(errors.detail?.type === 'required' || errors.detail?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
+                                    focus:ring-4 focus:ring-gray-200  ${(errors.recipient_name?.type === 'required' || errors.recipient_name?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}  
                                 placeholder='Full Name *' 
                             />
@@ -52,8 +51,8 @@ const CreateTask = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <textarea 
                                 style={{maxHeight:'100px'}} 
-                                onChange={handleChange}
                                 {...RegisterField("detail", {required: true, maxLength: 500})} 
+                                onChange={handleChange}
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.detail?.type === 'required' || errors.detail?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}    
@@ -65,8 +64,8 @@ const CreateTask = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='text'
-                                onChange={handleChange} 
                                 {...RegisterField("item_location", {maxLength: 50})} 
+                                onChange={handleChange} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.item_location?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}   
@@ -77,8 +76,8 @@ const CreateTask = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='text'
-                                onChange={handleChange} 
                                 {...RegisterField("delivery_location", {maxLength: 50})} 
+                                onChange={handleChange} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.delivery_location?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}   
@@ -89,8 +88,8 @@ const CreateTask = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='number'
-                                onChange={handleChange} 
                                 {...RegisterField("price_offer", {required: true})} 
+                                onChange={handleChange} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.price_offer?.type === 'required') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}   
