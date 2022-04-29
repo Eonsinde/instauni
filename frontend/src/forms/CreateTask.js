@@ -39,7 +39,7 @@ const CreateTask = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='text'
-                                {...RegisterField("recipient_name", {required: true, maxLength: 50})} 
+                                {...RegisterField("recipient_name", {required: true, maxLength: 100})} 
                                 onChange={handleChange} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.recipient_name?.type === 'required' || errors.recipient_name?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
@@ -64,7 +64,7 @@ const CreateTask = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='text'
-                                {...RegisterField("item_location", {maxLength: 50})} 
+                                {...RegisterField("item_location", {maxLength: 100})} 
                                 onChange={handleChange} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.item_location?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
@@ -76,7 +76,7 @@ const CreateTask = () => {
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
                                 type='text'
-                                {...RegisterField("delivery_location", {maxLength: 50})} 
+                                {...RegisterField("delivery_location", {maxLength: 100})} 
                                 onChange={handleChange} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.delivery_location?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
