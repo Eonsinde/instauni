@@ -8,7 +8,7 @@
 }
 
 .text-lg {
-  font-size: 1.125rem/* 18px */;
+  font-size: 1.1rem/* 18px */;
   line-height: 1.75rem/* 28px */;
 }
 
@@ -19,11 +19,11 @@ a:hover{
 body {
   margin: 0;
   padding: 0;
-  /* overflow: hidden; */
+  overflow-x: hidden;
   font-family: myFont2, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem/* 18px */;
+  font-size: 1.125rem/* 18px */;
   line-height: 1.75rem/* 28px */;
 }
 
