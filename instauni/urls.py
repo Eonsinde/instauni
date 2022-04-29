@@ -4,6 +4,8 @@ from instauni.api import *
 # this is where our routes are defined 
 
 router = routers.DefaultRouter()
-router.register('tasks', TaskViewSets, 'tasks')
+router.register('tasks', TaskViewSet, 'tasks')
+# router.register('contact', ContactAPI, 'contact')
+# router.register('FAQs', FAQAPI, 'FAQs')
 
 urlpatterns = router.urls
