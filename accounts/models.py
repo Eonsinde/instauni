@@ -28,6 +28,7 @@ class CustomAccountManager(BaseUserManager):
         return self.create_user(username, email, password, **other_fields)
 
     def create_user(self, username, email, password, **other_fields):
+        other_fields.setdefault('is_active', True)
 
         if not email:
             raise ValueError(_('You must provide an email address'))
@@ -45,21 +46,21 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ('f', "Female")
     )
 
+    username = models.CharField(max_length=50, unique=True)
     reg_no = models.CharField(max_length=7, unique=True)
-    username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(_('Email Address'), unique=True)
     password = models.CharField(max_length=255)
-    level = models.CharField(_("Level"), max_length=3, help_text="Format:- 200", default='')
+    level = models.CharField(_("Level"), max_length=3, help_text=_("Format:- 200"), default='')
     gender = models.CharField(_("Sex/Gender"), max_length=1, choices=GENDERS, default='m')
 
-    first_name = models.CharField(max_length=150, blank=True)
-    last_name = models.CharField(max_length=150, blank=True)
+    first_name = models.CharField(max_length=100, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
     image = models.ImageField(upload_to=handle_prof_img_upload, null=True, blank=True)
     
     hasWallet = models.BooleanField(default=False)
     isVerified = models.BooleanField(default=False)
 
-    date_of_birth = models.DateField(_("Date of Birth"), max_length=150, blank=True, null=True)
+    date_of_birth = models.DateField(_("Date of Birth"), blank=True, null=True)
     date_joined = models.DateTimeField(default=timezone.now)
    
     is_staff = models.BooleanField(default=False)
@@ -70,13 +71,23 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'password']
 
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
+
     def __str__(self):
-        return self.user_name
+        return self.username
 
     @property
     def isProfileCompleted(self):
         """ Check all fields that needs be filled and ensure they are """
         return False
+
+    @property
+    def getGender(self):
+        if self.gender == 'm':
+            return 'male'
+        return 'female'
 
     @property
     def get_fullname(self):
