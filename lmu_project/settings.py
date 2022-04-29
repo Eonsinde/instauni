@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import dotenv_values
 from datetime import timedelta
 
 # import corsheaders
@@ -39,10 +40,10 @@ INSTALLED_APPS = [
     "instauni",
     "wallet",
 
-    "rest_framework_simplejwt",
     "corsheaders",
-    "knox",
     "rest_framework",
+    'rest_framework_simplejwt.token_blacklist',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,14 +89,12 @@ WSGI_APPLICATION = 'lmu_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'leads',
-        # "USER": 'postgres',
-        # 'HOST': '127.0.0.1',
-        # "PASSWORD": 'Helicopter123',
-        # "PORT": 5432,
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'instauni_db',
+        "USER": 'postgres',
+        'HOST': '127.0.0.1',
+        "PASSWORD": 'Helicopter@123',
+        "PORT": 5432,
     }
 }
 
@@ -186,11 +185,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS
+# CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
 # Cookies will be allowed to be included in cross-site HTTP requests
 CORS_ALLOW_CREDENTIALS = True
 
+config = dotenv_values(".env")
+
 # for wallet APP
-ENCRYPTION_KEY = "NusK1lQ_SABjIqc37MMWoAtTWlVHgeTQ_rijWMewgzw="
+ENCRYPTION_KEY=config['ENCRYPTION_KEY']
