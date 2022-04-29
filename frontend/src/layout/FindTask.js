@@ -1,8 +1,11 @@
 import React,  { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+import { FiAlignLeft } from 'react-icons/fi';
+import { FcSearch } from 'react-icons/fc';
 import { BsClock, BsHouse } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
+
 import './styles/find_task.css';
 
 
@@ -55,19 +58,18 @@ const FindTask = () => {
             transition={{ duration: 0.5 }}
         >
         <section className='h-82vh'>
-            <div className='container mx-auto flex'>
-                <aside className='basis-1/4'>
-                    <header>
-                        <h2 className='text-app-green font-medium text-lg'>Filter</h2>
-                        <form onSubmit={e => e.preventDefault()}>
-                            <input type='text' onChange={e => setQuery(e.target.value)} />
-                        </form>
-                    </header>
-                    <ul>
-                        
-                    </ul>
-                </aside>
-                <main className='tasks-wrapper basis-3/4 grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 gap-3'>
+            <div className='container mx-auto'>
+                <header className='flex justify-between items-center  border-border-dark py-2'>
+                    <div className='text-app-green font-medium flex justify-center items-center text-2xl space-x-2'><FiAlignLeft /><span className='text-xl'>Filter</span></div>
+                    <form className='' onSubmit={e => e.preventDefault()}>
+                        <div className='border-2 rounded border-border-dark py-1 mx-auto flex justify-between items-center'>
+                            <label className='text-2xl basis-1/5 flex justify-center items-center px-2'><FcSearch /></label>
+                            <input type='text' onChange={e => setQuery(e.target.value)} className='basis-4/5 outline-none pr-3' placeholder='Search names, halls, task type' />
+                        </div>
+                    </form>
+                </header>
+
+                <main className='tasks-wrapper basis-3/4 grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 gap-2'>
                     {
                         tasks.map((task, id) => 
                             <figure key={id} className="space-y-4 border-2 border-gray-100 shadow-md p-10 rounded-lg">
