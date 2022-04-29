@@ -1,6 +1,9 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Collapse } from 'antd';
+
+import { useAuth } from '../context/AuthContext';
 // import MyAccordionGroup from './Accordion/MyAccordionGroup';
 
 import homeImg from '../Assets/images/home/homepic.png';
@@ -16,28 +19,44 @@ import './styles/home.css';
 
 
 const Home = () => {
+    const { user } = useAuth();
+
+    useEffect(() => {
+        // make request for FAQs using dispatch
+    }, []);
+
     return (
         <> 
-        <section className='showcase-section container mx-auto h-70vh flex md:flex-row justify-center items-center flex-col-reverse'>
-            <div className='showcase-text text-gray-800 basis-1/2 space-y-6 mt-10 md:mt-0'>
-                <h1 className='font-bold text-5xl'>Make your life easier<br /> and softer</h1>
-                <p className='text-lg'>
+        <section className='showcase-section container mx-auto h-82vh flex md:flex-row justify-center items-center flex-col-reverse px-5'>
+            <div className='showcase-text text-gray-800 basis-1/2 space-y-6 mt-10 md:mt-0 md:text-left text-center'>
+                <h1 className='font-bold lg:text-5xl text-4xl'>Make your life easier<br /> and softer</h1>
+                <p className='text-lg '>
                     Whatever you want within the campus, brought right to you<br/>
                 </p>
                 <div className='flex md:justify-start md:items-center justify-center items-center space-x-2'>
-                    <Link to='/register' className='bg-white border-2 border-app-green py-2 px-2 text-app-green hover:text-app-green font-bold text-center inline-block md:basis-2/6 basis-3/6 rounded-md'>Create Account</Link>
-                    <Link to='/login' className='bg-app-green py-2 px-2 border-2 border-app-green text-white hover:text-white font-bold text-center inline-block md:basis-3/12 basis-2/6 rounded-md'>Log In</Link>
+                    <Link 
+                        to={`${(user === null) ? '/register' : '/create-task'}`}
+                        className='bg-white border-2 border-app-green py-2 px-2 text-app-green hover:text-app-green font-bold text-center inline-block lg:basis-2/6 md:basis-5/12 basis-3/6 rounded-md'
+                    >
+                        {(user === null) ? 'Create Account' : 'Create Task'}
+                    </Link>
+                    <Link 
+                        to={`${(user === null) ? '/login' : '/find-task'}`}
+                        className='bg-app-green py-2 px-2 border-2 border-app-green text-white hover:text-white font-bold text-center inline-block lg:basis-3/12 md:basis-1/4 basis-2/6 rounded-md'
+                    >
+                        {(user === null) ? 'Log In' : 'Find Task'}
+                    </Link>
                 </div>
             </div>
             <div className='basis-1/2'>
-                <img src={homeImg} alt='Page Not Found Img' width={'85%'} height={'85%'} />
+                <img src={homeImg} alt='Page Not Found Img' className='md:ml-auto' width={'85%'} height={'85%'} />
             </div>
         </section>
 
-        <section className='about-section bg-gray-50 mt-12vh py-40'>
+        <section className='about-section bg-gray-50 mt-6vh py-40 px-5'>
             <div className='container mx-auto'>
                 <div className='about-header text-center mb-20'>
-                    <h1 className='font-bold text-5xl mb-8'>How it works</h1>
+                    <h1 className='font-bold lg:text-5xl text-4xl mb-8'>How it works</h1>
                     <p className='text-lg'>Get started with 3 simple steps</p>
                 </div>
                 <div className='about-body flex md:flex-row flex-col items-center justify-center md:space-y-0 space-y-10'>
@@ -69,14 +88,14 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <Link to='/objectives' className='bg-app-green py-2 px-2 border-2 rounded-md border-app-green text-white font-bold text-center block w-52 mt-12 mx-auto text-lg'>Get Started</Link>
+                <Link to='/objectives' className='bg-app-green py-2 px-2 border-2 rounded-md border-app-green text-white hover:text-white font-bold text-center block w-52 mt-12 mx-auto text-lg'>Get Started</Link>
             </div>
         </section>
 
-        <section className='faq-section py-40'>
+        <section className='faq-section py-40 px-5'>
             <div className='container mx-auto'>
                 <div className='faq-header text-center mb-20'>
-                    <h1 className='font-bold text-5xl mb-8'>FAQs</h1>
+                    <h1 className='font-bold lg:text-5xl text-4xl mb-8'>FAQs</h1>
                     <p className='text-lg'>Have question? We are here to help</p>
                     <form className='mt-4'>
                         <div className='border-2 rounded-md border-border-dark py-2 xl:w-3/12 lg:w-2/6 md:w-5/12 sm:w-3/5 w-3/4 mx-auto flex justify-between items-center'>
@@ -91,6 +110,7 @@ const Home = () => {
                         defaultActiveKey={['']} 
                         expandIcon={({ isActive }) => isActive ? <AiOutlineUp style={{ fontSize: '1.1rem' }} /> : <AiOutlineDown style={{ fontSize: '1.1rem' }} /> }
                         expandIconPosition={'right'}
+                        accordion
                     >
                         <Collapse.Panel header="This is panel header 1" key="1">
                             <p>lorem jrbfjkfnrkf fjknjrnfjre frjf ref er f rjkfn rf refjnrejf rj fjf jk fjkw fjk f jwe fjw f wfjk ejf we fkjejf jwe fwejf jke kewjf ek wf</p>
@@ -103,7 +123,7 @@ const Home = () => {
                         </Collapse.Panel>
                     </Collapse>
                 </div>
-                <div className='text-lg mt-20 text-center'>
+                <div className='text-lg mt-20 text-center px-5'>
                     <span className='font-bold'>Still have questions?{' '}</span><Link to='/objectives' className='text-app-green hover:text-app-green'>Get Started</Link>
                     {' '}and we will get back within 24 hours
                 </div>
