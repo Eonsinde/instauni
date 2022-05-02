@@ -1,9 +1,18 @@
-import {useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { motion } from 'framer-motion';
+import axios from 'axios';
+import { toast } from 'react-toastify'
+import { BASE_URL } from '../constants';
 
 
 const Contact = () => {
+    useEffect(() => {  
+        document.title = `InstaLife | Reach Us`;
+    }, []);
+
+
+    let [isLoading, setIsLoading] = useState(false);
     let [formData, setFormData] = useState({
         "full_name": "",
         "email": "",
@@ -20,8 +29,27 @@ const Contact = () => {
         }));
     }
 
-    const handleSubmit = () => {
+    const handleSubmitRequest = async () => {
+        try{
+            const resp = await axios.post(`${BASE_URL}/api/contact`, formData);
 
+            if (resp.status === 201){ // created
+                setIsLoading(false);
+                toast.success(`Submitted Successfully`);
+                return resp;
+            }else{
+                setIsLoading(false);
+                toast.error(`Failed to Submit - 1`);
+            }
+        } catch(error){
+            setIsLoading(false);
+            toast.success(`Failed to Submit - 2`);
+        }
+    }
+
+    const handleSubmit = () => {
+        setIsLoading(true);
+        handleSubmitRequest();
     }
 
 
@@ -85,7 +113,13 @@ const Contact = () => {
                             ></textarea>
                             {/* <p className='text-sm text-slate-500 px-2'><span className='text-app-green'>NB</span>: Detailed description of task, like the location of the items</p> */}
                         </div>
-                        <button type='submit' className='bg-app-green text-white p-3 mt-0 md:mt-2 rounded-md shadow-sm focus:ring-4 focus:ring-green-200 transition ease-in-out delay-150'>Submit</button>
+                        <button 
+                            disabled={isLoading ? true : false}
+                            type='submit' 
+                            className={`${!isLoading ? 'bg-app-green' : 'bg-app-green-opacity animate-pulse'} text-white p-3 rounded-md shadow-sm focus:ring-4 focus:ring-green-200 transition ease-in-out delay-150`}
+                        >
+                            {isLoading ? 'Submitting' : 'Submit'}
+                        </button>
                         {/* <p className='text-center mt-7 md:mt-3 lg:mt-6 text-gray-800'>Return to <Link to='/objectives' className='text-app-green hover:text-app-green'>Objectives</Link></p> */}
                     </form>
                 </div>
