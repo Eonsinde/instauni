@@ -28,7 +28,7 @@ const Register = () => {
     const navigate = useNavigate();
     const dispatch  = useDispatch();
 
-    const { user, isLoading, isError, isSuccess, message } = useSelector(state => state.auth);
+    const { user, isLoading, registerSuccess, isError, message } = useSelector(state => state.auth);
 
     useEffect(() => {
         if (isError) {
@@ -36,12 +36,12 @@ const Register = () => {
             dispatch(reset());
         }
 
-        if (user || isSuccess || message.message === "success"){
+        if (registerSuccess){
             navigate('/login');
             toast.success("Account has been registered - Login to continue");
             dispatch(reset());
         }
-    }, [user, isLoading, isError, isSuccess, message, navigate, dispatch]);
+    }, [user, isLoading, isError, registerSuccess, message, navigate, dispatch]);
 
     const handleChange = e => {
         setFormData(prevState => ({
@@ -62,7 +62,7 @@ const Register = () => {
         }
     }
 
-    if (user || isSuccess)
+    if (user)
         return <Navigate to='/' />;
     return ( 
         <>
@@ -113,6 +113,7 @@ const Register = () => {
                         </div>
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
                             <input
+                                type='number'
                                 {...RegisterField("level", { minLength: 3, maxLength: 3, required: true })} 
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm 
                                     focus:border-gray-200 focus:ring-4 focus:ring-gray-200 

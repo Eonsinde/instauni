@@ -27,7 +27,7 @@ const Login = () => {
 
     const from = location.state?.from?.pathname;
 
-    const { user, isLoading, isError, isSuccess, message } = useSelector(state => state.auth);
+    const { user, isLoading, isError, loginSuccess, message } = useSelector(state => state.auth);
 
     useEffect(() => {
         if (isError){
@@ -35,13 +35,13 @@ const Login = () => {
             dispatch(reset());
         }
 
-        if (user || isSuccess){
+        if (loginSuccess){
             if (from) // navigate to protected view 
                 navigate(from, { replace: true });
             toast.success(`Logged In: Welcome ${user?.username}`);
             dispatch(reset());
         }
-    }, [user, isLoading, isError, isSuccess, message, navigate, dispatch]);
+    }, [user, isLoading, isError, loginSuccess, message, navigate, dispatch]);
 
     const handleChange = e => {
         setFormData(prevState => ({
@@ -56,7 +56,7 @@ const Login = () => {
     }
 
     // we can also use navigate here incase of any issues
-    if (user || isSuccess)
+    if (user)
         navigate('/');
     return (
             <>
