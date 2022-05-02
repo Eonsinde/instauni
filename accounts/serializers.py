@@ -9,24 +9,11 @@ from accounts.models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'reg_no', 'username', 'password', 'email', 'first_name', 'last_name', 'image', 
-                'level', 'gender', 'hasWallet', 'isVerified', 'date_of_birth', 'date_joined', 'getGender', 'isProfileCompleted']
+        fields = ['id', 'reg_no', 'username', 'password', 'email', 'first_name', 'last_name', 'image', 'level', 
+                'gender', 'hasWallet', 'isVerified', 'date_of_birth', 'date_joined', 'get_fullname', 'get_gender', 'is_profile_completed']
         extra_kwargs = {'id': {'read_only': True}, 'password': {'write_only': True}}
 
-    def create(self, validated_data):
-        username = validated_data.pop('username')
-        email = validated_data.pop('email')
-        password = validated_data.pop('password')
-        user = CustomUser.objects.create_user(username, email, password, **validated_data)
-        # user.is_staff = True
 
-        # to create the wish list for the user
-        return user
-
-    # override method for updating and deleting users
-
-
-# Register Serializer
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -41,15 +28,4 @@ class RegisterSerializer(serializers.ModelSerializer):
         password = validated_data.pop('password')
         user = CustomUser.objects.create_user(username, email, password, **validated_data)
         return user
-
-
-class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField()
-    password = serializers.CharField()
-
-    def validate(self, data):
-        user = authenticate(**data)
-        if user and user.is_active:
-            return user
-        raise serializers.ValidationError("Incorrect Credentials")
 
