@@ -14,12 +14,14 @@ class Task(models.Model):
 
     recipient_name = models.CharField(max_length=100, help_text="Person to deliver task to")
     detail = models.CharField(max_length=500, help_text="Details on task to be performed")
-    delivery_location = models.CharField(max_length=300, help_text='Where to deliver to')
+    delivery_location = models.CharField(max_length=100, help_text='Where to deliver to')
     item_location = models.CharField(max_length=100, help_text="item's location is needed")
     price_offer = models.FloatField(help_text="Item Price")
     status = models.CharField(max_length=1, choices=STATUSES, default='p', help_text="Set the status of Task: Pending/Completed/Accepted")
     # cascade means, if u delete the ref user then, the task should also be deleted
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Task Creator", on_delete=models.CASCADE, null=True)
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Task Creator", on_delete=models.CASCADE, null=True)
+    # When a user accepts a task, the user is bound to the created task as the executioner
+    # deliverer = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name="Task Deliverer", on_delete=models.CASCADE, null=True)
     date_created = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
@@ -77,13 +79,18 @@ class AcceptedTaskList(models.Model):
         return f'{self.user.username} has {self.tasks.Count()}'
 
     
-
+# implement cronJOB that would prevent the same user from submitting 
+# multiple times(use email & full name as safe guards). It should take 
+# 12Hrs b4 the user can submit another after initial submission
 class Contact(models.Model):
     full_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=80)
     title = models.CharField(max_length=100)
     message = models.TextField(max_length=450)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.email} - {self.title[:15]}...'
 
     class Meta:
         ordering = ['-created_at']
@@ -92,3 +99,9 @@ class Contact(models.Model):
 class FAQ(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField(max_length=450)
+
+    def __str__(self):
+        return f'{self.title[:20]}...'
+
+    class Meta:
+        ordering = ['-id']
