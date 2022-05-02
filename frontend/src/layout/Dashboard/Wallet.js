@@ -1,8 +1,13 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
 const Wallet = () => {
+    useEffect(() => {  
+        document.title = `InstaLife | Username's | Wallet`;
+    }, []);
+
+
     return ( 
         <div className='wallect-section flex flex-col space-y-10'>
            <div className='wallet-header'>

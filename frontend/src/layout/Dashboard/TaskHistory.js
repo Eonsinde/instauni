@@ -1,8 +1,13 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
 const TaskHistory = () => {
+    useEffect(() => {  
+        document.title = `InstaLife | Username's | Task Hstory`;
+    }, []);
+
+
     return ( 
         <>
             <div className='history-section'>

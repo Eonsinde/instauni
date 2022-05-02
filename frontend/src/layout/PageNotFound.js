@@ -1,9 +1,14 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import errorImg from '../Assets/images/pnf.jpg'
+import errorImg from '../assets/images/pnf.jpg'
 
 
 const PageNotFound = () => {
+    useEffect(() => {  
+        document.title = `InstaLife | Page Not Found`;
+    }, []);
+
+
     return (
         <> 
         <header style={{height: '18vh'}} className="">

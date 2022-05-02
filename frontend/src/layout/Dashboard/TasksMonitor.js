@@ -1,8 +1,12 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
 const TasksMonitor = () => {
+    useEffect(() => {  
+        document.title = `InstaLife | Username's | Task Monitor`;
+    }, []);
+
     return ( 
         <>
             <div className=''>
