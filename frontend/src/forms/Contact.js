@@ -16,7 +16,6 @@ const Contact = () => {
     let [formData, setFormData] = useState({
         "full_name": "",
         "email": "",
-        "title": "",
         "message": "",
     });
 
@@ -36,6 +35,7 @@ const Contact = () => {
             if (resp.status === 201){ // created
                 setIsLoading(false);
                 toast.success(`Submitted Successfully`);
+                setTimeout(() => { setFormData({ full_name: '', email: '', message: '' }) }, 1000);
                 return resp;
             }else{
                 setIsLoading(false);
@@ -62,7 +62,11 @@ const Contact = () => {
         >
         <section className='h-88vh overflow-hidden'>
             <div className='container mx-auto h-full'>
-                <div className='h-full flex justify-center items-start lg:mt-28 mt-28'>
+                <div className='h-full flex flex-col justify-start items-center mt-20'>
+                    <header className='text-center mb-10 px-4 sm:px-0'>
+                        <h1 className='font-bold lg:text-5xl text-4xl mb-4'>Contact Us</h1>
+                        <p className='text-lg '>Have any questions, complaints or suggestions?<br/>Contact us and will get back to you within 24 hours</p>
+                    </header>
                     <form onSubmit={SubmitForm(handleSubmit)} className='flex flex-col px-2 w-10/12 md:w-8/12 lg:w-5/12 mx-auto'> 
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
@@ -71,7 +75,8 @@ const Contact = () => {
                                 onChange={handleChange}
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.full_name?.type === 'required' || errors.full_name?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150`}   
+                                    transition ease-in-out delay-150`}
+                                value={formData.full_name}     
                                 placeholder='Full Name *' 
                             />
                             {/* <p className='text-sm text-slate-500 px-2'><span className='text-app-green'>NB</span>: Person to delivery to(if you - write your info)</p> */}
@@ -83,33 +88,22 @@ const Contact = () => {
                                 onChange={handleChange}
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.email?.type === 'required' || errors.email?.type === 'pattern') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150`}    
+                                    transition ease-in-out delay-150`}  
+                                value={formData.email}   
                                 placeholder="Email *" 
                             />
                             {/* <p className='text-sm text-slate-500 px-2'><span className='text-app-green'>NB</span>: Where item is located</p> */}
                         </div>
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
-                            <input 
-                                type='text' 
-                                {...RegisterField("title", {required: true, maxLength: 100})} 
-                                onChange={handleChange}
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
-                                    focus:ring-4 focus:ring-gray-200  ${(errors.title?.type === 'required' || errors.title?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150`}   
-                                placeholder="Title *" 
-                            />
-                            {/* <p className='text-sm text-slate-500 px-2'><span className='text-app-green'>NB</span>: Where item should be delivered</p> */}
-
-                        </div>
-                        <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <textarea 
-                                style={{maxHeight:'100px'}}
+                                style={{maxHeight:'150px', minHeight:'150px'}}
                                 {...RegisterField("message", {required: true, maxLength: 450})} 
                                 onChange={handleChange}
                                 className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
                                     focus:ring-4 focus:ring-gray-200  ${(errors.message?.type === 'required' || errors.message?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
                                     transition ease-in-out delay-150`}   
-                                placeholder="Message *"
+                                value={formData.message}
+                                placeholder="What can we help you with? *"
                             ></textarea>
                             {/* <p className='text-sm text-slate-500 px-2'><span className='text-app-green'>NB</span>: Detailed description of task, like the location of the items</p> */}
                         </div>
