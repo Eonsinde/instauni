@@ -39,7 +39,11 @@ const CreateTask = () => {
         >
         <section className='h-88vh overflow-hidden'>
             <div className='container mx-auto h-full'>
-                <div className='h-full flex justify-center items-start mt-28'>
+                <div className='h-full flex flex-col justify-start items-center mt-20'>
+                    <header className='text-center mb-10  px-4 sm:px-0'>
+                        <h1 className='font-bold lg:text-5xl text-4xl mb-4'>Create Microjob</h1>
+                        <p className='text-lg '>Post a micrjob for individuals around <br />the school to find and deliver</p>
+                    </header>
                     <form onSubmit={SubmitForm(handleSubmit)} className='flex flex-col px-2 w-10/12 md:w-8/12 lg:w-5/12 mx-auto'> 
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
                             <input 
