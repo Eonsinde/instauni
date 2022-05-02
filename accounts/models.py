@@ -46,6 +46,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ('f', "Female")
     )
 
+    # this fields are compulsory and need makes
     username = models.CharField(max_length=50, unique=True)
     reg_no = models.CharField(max_length=7, unique=True)
     email = models.EmailField(_('Email Address'), unique=True)
@@ -79,17 +80,39 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.username
 
     @property
-    def isProfileCompleted(self):
+    def is_profile_completed(self):
         """ Check all fields that needs be filled and ensure they are """
-        return False
+        completedFieldsCount = 0
+        if self.username != '' or self.username != None:
+            completedFieldsCount += 1
+        if self.reg_no != '' or self.reg_no != None:
+            completedFieldsCount += 1
+        if self.level != 0 or self.level != None:
+            completedFieldsCount += 1
+        if self.gender != '' or self.gender != None:
+            completedFieldsCount += 1
+        if self.email != '' or self.email != None:
+            completedFieldsCount += 1
+        if (self.first_name != '' and self.last_name != ''):
+            completedFieldsCount += 1
+        if self.image != None:
+            completedFieldsCount += 1
+        if self.hasWallet:
+            completedFieldsCount += 1
+        if self.isVerified:
+            completedFieldsCount += 1
+        if self.date_of_birth != None:
+            completedFieldsCount += 1
+
+        return (float(completedFieldsCount)/10.0) * 100.0
 
     @property
-    def getGender(self):
+    def get_gender(self):
         if self.gender == 'm':
             return 'male'
         return 'female'
 
     @property
     def get_fullname(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        return f'{self.first_name} {self.last_name}'
 
