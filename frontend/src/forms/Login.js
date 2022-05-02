@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
@@ -6,10 +6,14 @@ import { login, reset } from '../reducers/auth/authSlice';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import loginImg from '../Assets/images/login.png';
+import loginImg from '../assets/images/login.png';
 
 
 const Login = () => {
+    useEffect(() => {  
+        document.title = `InstaLife | Login`
+    }, []);
+
     let [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -34,7 +38,7 @@ const Login = () => {
         if (user || isSuccess){
             if (from) // navigate to protected view 
                 navigate(from, { replace: true });
-            toast.success(`Logged In: Welcome ${user.username}`);
+            toast.success(`Logged In: Welcome ${user?.username}`);
             dispatch(reset());
         }
     }, [user, isLoading, isError, isSuccess, message, navigate, dispatch]);

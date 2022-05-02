@@ -1,4 +1,4 @@
-import React,  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 import { FiAlignLeft } from 'react-icons/fi';
@@ -9,7 +9,14 @@ import { GoLocation } from 'react-icons/go';
 import './styles/find_task.css';
 
 
+// Quick Notes:
+// When a user accepts a task, the user is bound to the created task as the executioner
+
 const FindTask = () => {
+    useEffect(() => {  
+        document.title = `InstaLife | Find Tasks`
+    }, []);
+
     let [query, setQuery] = useState('');
     let [tasks, setTasks] = useState([
         {

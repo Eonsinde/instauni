@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { motion } from 'framer-motion';
 
 
 const CreateTask = () => {
+    useEffect(() => {  
+        document.title = `InstaLife | Create Task`;
+    }, []);
+
+    let [isLoading, setIsLoading] = useState(false);
     let [formData, setFormData] = useState({
         "recipient_name": "",
         "detail": "",
@@ -97,7 +102,13 @@ const CreateTask = () => {
                             />
                             {/* <p className='text-sm text-slate-500 px-2'><span className='text-app-green'>NB</span>: Price for task fulfillment</p> */}
                         </div>
-                        <button type='submit' className='bg-app-green text-white p-3 mt-0 md:mt-2 rounded-md shadow-sm focus:ring-4 focus:ring-green-200 transition ease-in-out delay-150'>Create Task</button>
+                        <button 
+                            disabled={isLoading ? true : false}
+                            type='submit' 
+                            className={`${!isLoading ? 'bg-app-green' : 'bg-app-green-opacity animate-pulse'} text-white p-3 rounded-md shadow-sm focus:ring-4 focus:ring-green-200 transition ease-in-out delay-150`}
+                        >
+                            {isLoading ? 'Submitting' : 'Create Task'}
+                        </button>
                         {/* <p className='text-center mt-7 md:mt-3 lg:mt-6 text-gray-800'>Return to <Link to='/objectives' className='text-app-green hover:text-app-green'>Objectives</Link></p> */}
                     </form>
                 </div>
