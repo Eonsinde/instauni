@@ -1,6 +1,6 @@
 /* had to implement this manually because of class nam conflict btwn tailwind and bootstrap(text-center) */
 
-.showcase-text{
+/* .showcase-text{
     text-align: left;
 }
 
@@ -8,9 +8,23 @@
     .showcase-text{
         text-align: center;
     }
+} */
+
+.ant-collapse-header {
+    padding: 1.5rem 16px !important;
+    /* color: red !important; */
+}
+
+html.dark .ant-collapse-header{
+    color: white !important;
 }
 
 .ant-collapse-content {
     --tw-bg-opacity: 1;
     background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+html.dark .ant-collapse-content{
+    background-color: rgb(27, 27, 27);
+    color: whitesmoke;
 }
