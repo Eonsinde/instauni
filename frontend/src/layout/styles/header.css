@@ -9,29 +9,90 @@
     --speed: 500ms;
 }
   
-/* ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+
+/* Styles for our menu */
+.nav_bar{
+
 }
+
+.nav_bar_nav{
+
+}
+
+@media screen and (max-width: 768px) {
+  .nav_bar_header{
+    flex-basis: 100%;
+  }
+
+  .nav_bar_toggler{
+    display: block;
+  }
+
+  .nav_bar{
+    /* display: none; */
+  }
+
+  .nav_bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100vh;
+    width: 100vw;
+    background: #31313146;
+    display: none;
+  }
+
+  .nav_bar.open{
+    display: block;
+  }
   
-a{
-    color: var(--text-color);
-    text-decoration: none;
-} */
-  
-  
+  .nav_bar_nav{
+    height: 100%;
+    width: 280px;
+    padding: 150px 0;
+    flex-direction: column;
+    background: #23B123;
+    transform: translateX(-100%);
+    transition: all .5s ease;
+  }
+
+  .nav_bar.open > .nav_bar_nav{
+    transform: translateX(0);
+    transition: all .5s ease;
+  }
+
+  .nav_bar_nav > .nav_bar_close_btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .nav_bar_nav > .nav_item{
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+
+  .nav_bar_nav > .nav_item > .nav_link{
+    color: #fff;
+  }
+}
+
+
+/* Styles for our drop down menu */
 .icon{
-    /* font-size: 1.2rem; */
-    /* --button-size: calc(var(--nav-size) * 0.6); */
-    /* height: var(--button-size); */
-    /* width: var(--button-size); */
-    height: 35px;
-    width: 35px;
-    font-size: 1.3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* font-size: 1.2rem; */
+  /* --button-size: calc(var(--nav-size) * 0.6); */
+  /* height: var(--button-size); */
+  /* width: var(--button-size); */
+  height: 35px;
+  width: 35px;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
   
 .icon-button{
@@ -42,154 +103,214 @@ a{
     /* padding: 0; */
 }
   
-  a.dropdown-item > .icon-button{
-    margin-right: 10px;
-  }
+a.dropdown-item > .icon-button{
+  margin-right: 10px;
+}
+
+.icon-right{
   
-  .icon-right{
+}
   
-  }
+.icon-button:hover{
+  /* filter: brightness(1.2); */
+}
   
-  .icon-button:hover{
-    /* filter: brightness(1.2); */
-  }
-  
+.dropdown{
+  z-index: 5;
+  position: absolute;
+  top: 50px;
+  width: 300px;
+  transform: translateX(-74%);
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow: hidden;
+  transition: height var(--speed) ease;
+}
+
+html.dark .dropdown{
+  background: rgb(27, 27, 27);
+  border: rgb(22, 22, 22);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 768px) {
   .dropdown{
     position: absolute;
-    top: 40px;
-    width: 300px;
-    transform: translateX(-74%);
+    top: 55px;
+    width: 100%;
+    transform: translateX(0%);
     background-color: var(--bg);
     border: var(--border);
-    border-radius: var(--border-radius);
+    border-radius: 0;
     padding: 1rem;
     overflow: hidden;
     transition: height var(--speed) ease;
   }
+    
+}
   
-  /* the header for drop down menu if needed */
-  .dropdown-header{
-    height: 50px;
-    display: flex; 
-    align-items: center;
-    border-radius: var(--border-radius);
-    transition: background var(--speed);
-    padding: 0.5rem;
-    /* font-size: 1.2rem; */
-    font-weight: bold;
-    /* color: #fff; */
-  }
+/* the header for drop down menu if needed */
+.dropdown-header{
+  height: 50px;
+  display: flex; 
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
+  /* font-size: 1.2rem; */
+  /* font-weight: bold; */
+  /* color: #fff; */
+}
   
-  .dropdown-header > a{
-    margin-right: 10px;
-  }
+.dropdown-header > a{
+  margin-right: 10px;
+}
+
+html.dark .dropdown-header > a{
+  color: #fff;
+}
   
-  .dropdown-header > p{
-    margin: 0;
-    padding: 0;
-    font-size: 1.2rem;
-  }
+.dropdown-header > p{
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
+}
+
+html.dark .dropdown-header > p{
+  color: #fff;
+}
   
-  /* the drop down item to toggle app theme - dark/light mode */
+/* the drop down item to toggle app theme - dark/light mode */
+.dropdown-theme-item{
+  display: flex; 
+  align-items: flex-start;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
+  /* font-size: 1.2rem; */
+  /* color: #fff; */
+}
+
+@media screen and (max-width: 768px) {
   .dropdown-theme-item{
-    display: flex; 
-    align-items: flex-start;
-    border-radius: var(--border-radius);
-    transition: background var(--speed);
-    padding: 0.5rem;
-    /* font-size: 1.2rem; */
-    /* color: #fff; */
+    border-radius: 0;
   }
+    
+}
+
+.dropdown-theme-item > p{
+  font-weight: bold;
+}
+
+html.dark .dropdown-theme-item > p{
+  color: #fff;
+}
   
-  .dropdown-theme-item > p{
-    font-weight: bold;
-  }
+.dropdown-theme-item > a{
+  /* margin-left: auto; */
+  margin-right: 10px;
+}
+
+html.dark .dropdown-theme-item > a{
+  color: #fff;
+}
   
-  .dropdown-theme-item > a{
-    /* margin-left: auto; */
-    margin-right: 10px;
-  }
+.app-theme-form-sect{
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
+  border-radius: var(--border-radius);
+}
   
-  .app-theme-form-sect{
-    display: flex;
-    align-items: center;
-    margin: 0.5rem 0;
-    padding: 0.5rem 0.5rem;
-    border-radius: var(--border-radius);
-  }
+.app-theme-form-sect:hover{
+  background: var(--bg-accent);
+}
   
-  .app-theme-form-sect:hover{
-    background: var(--bg-accent);
-  }
-  
-  .app-theme-form-sect > input{
-    margin-left: auto;
-  }
+.app-theme-form-sect > input{
+  margin-left: auto;
+}
   
   
-  /* a casual dropdown-item */
+/* a casual dropdown-item */
+.dropdown-item{
+  height: 50px;
+  display: flex; 
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
+}
+  
+.dropdown-item:hover{
+  background-color: rgb(243, 244, 246);
+}
+
+html.dark .dropdown-item{
+  color: #fff;
+}
+
+html.dark .dropdown-item:hover{
+  background-color: rgba(255, 255, 255, 0.178);
+}
+  
+@media screen and (max-width: 768px) {
   .dropdown-item{
-    height: 50px;
-    display: flex; 
-    align-items: center;
-    border-radius: var(--border-radius);
-    transition: background var(--speed);
-    padding: 0.5rem;
+    border-radius: 0;
   }
-  
-  .dropdown-item:hover{
-    background-color: rgb(243, 244, 246);
-  }
-  
-  /* 
-    Push right icon in dropdown-item to the right 
-    works only if parent is displays flex
-  */
-  .icon-right{
-    margin-left: auto;
-  }
+}
+
+/* 
+  Push right icon in dropdown-item to the right 
+  works only if parent is displays flex
+*/
+.icon-right{
+  margin-left: auto;
+}
   
   
-  /* for CSS transition */
-  .menu{
-    width: 100%;
-  }
-  
-  .menu-primary-enter{
-    position: absolute;
-    transform: translateX(-110%);
-  }
-  
-  .menu-primary-enter-active{
-    transform: translateX(0);
-    transition: all var(--speed) ease;
-  }
-  
-  .menu-primary-exit{
-    position: absolute;
-  }
-  
-  .menu-primary-exit-active{
-    transform: translateX(-110%);
-    transition: all var(--speed) ease;
-  }
-  
-  /* secondary menu */
-  .menu-secondary-enter{
-    position: absolute;
-    transform: translateX(110%);
-  }
-  
-  .menu-secondary-enter-active{
-    transform: translateX(0);
-    transition: all var(--speed) ease;
-  }
-  
-  .menu-secondary-exit{
-    position: absolute;
-  }
-  
-  .menu-secondary-exit-active{
-    transform: translateX(110%);
-    transition: all var(--speed) ease;
-  }
+/* for CSS transition */
+.menu{
+  width: 100%;
+}
+
+.menu-primary-enter{
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.menu-primary-enter-active{
+  transform: translateX(0);
+  transition: all var(--speed) ease;
+}
+
+.menu-primary-exit{
+  position: absolute;
+}
+
+.menu-primary-exit-active{
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+/* secondary menu */
+.menu-secondary-enter{
+  position: absolute;
+  transform: translateX(110%);
+}
+
+.menu-secondary-enter-active{
+  transform: translateX(0);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-exit{
+  position: absolute;
+}
+
+.menu-secondary-exit-active{
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
+}
