@@ -60,12 +60,12 @@ const Contact = () => {
             exit={{ translateX: '-100%' }}
             transition={{ duration: 0.5 }}
         >
-        <section className='h-88vh overflow-hidden'>
+        <section className='overflow-hidden'>
             <div className='container mx-auto h-full'>
                 <div className='h-full flex flex-col justify-start items-center mt-20'>
                     <header className='text-center mb-10 px-4 sm:px-0'>
-                        <h1 className='font-bold lg:text-5xl text-4xl mb-4'>Contact Us</h1>
-                        <p className='text-lg '>Have any questions, complaints or suggestions?<br/>Contact us and will get back to you within 24 hours</p>
+                        <h1 className='font-bold lg:text-5xl text-4xl mb-4 dark:text-white'>Contact Us</h1>
+                        <p className='text-lg dark:text-slate-200'>Have any questions, complaints or suggestions?<br/>Contact us and will get back to you within 24 hours</p>
                     </header>
                     <form onSubmit={SubmitForm(handleSubmit)} className='flex flex-col px-2 w-10/12 md:w-8/12 lg:w-5/12 mx-auto'> 
                         <div className='form-sect mb-5 md:mb-3 lg:mb-4'>
@@ -73,9 +73,10 @@ const Contact = () => {
                                 type='text' 
                                 {...RegisterField("full_name", {required: true, maxLength: 100})} 
                                 onChange={handleChange}
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
-                                    focus:ring-4 focus:ring-gray-200  ${(errors.full_name?.type === 'required' || errors.full_name?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150`}
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm focus:border-gray-200 
+                                    focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500 
+                                    ${(errors.full_name?.type === 'required' || errors.full_name?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`}
                                 value={formData.full_name}     
                                 placeholder='Full Name *' 
                             />
@@ -86,9 +87,10 @@ const Contact = () => {
                                 type='text' 
                                 {...RegisterField("email", { pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, required: true })} 
                                 onChange={handleChange}
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
-                                    focus:ring-4 focus:ring-gray-200  ${(errors.email?.type === 'required' || errors.email?.type === 'pattern') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150`}  
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm focus:border-gray-200 
+                                    focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500 
+                                    ${(errors.email?.type === 'required' || errors.email?.type === 'pattern') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`}  
                                 value={formData.email}   
                                 placeholder="Email *" 
                             />
@@ -99,9 +101,10 @@ const Contact = () => {
                                 style={{maxHeight:'150px', minHeight:'150px'}}
                                 {...RegisterField("message", {required: true, maxLength: 450})} 
                                 onChange={handleChange}
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
-                                    focus:ring-4 focus:ring-gray-200  ${(errors.message?.type === 'required' || errors.message?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150`}   
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm focus:border-gray-200 
+                                    focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500 
+                                    ${(errors.message?.type === 'required' || errors.message?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`}   
                                 value={formData.message}
                                 placeholder="What can we help you with? *"
                             ></textarea>

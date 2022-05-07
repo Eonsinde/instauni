@@ -68,7 +68,7 @@ const Register = () => {
         <>
         <header style={{height: '18vh'}} className="">
             <div className='container h-full mx-auto flex justify-center items-center relative'>
-                <Link to='/' className='text-gray-800 md:text-5xl text-4xl font-semibold hover:text-gray-800'>Insta<span className="text-app-green">life</span></Link>
+                <Link to='/' className='text-gray-800 md:text-5xl text-4xl font-semibold hover:text-gray-800 dark:text-white'>Insta<span className="text-app-green">life</span></Link>
             </div>
         </header>
         <section className='h-82vh overflow-hidden py-2'>
@@ -81,10 +81,10 @@ const Register = () => {
                          <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
                             <input 
                                 {...RegisterField("email", { pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, required: true })} 
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm 
-                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200  
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm 
+                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500 
                                     ${(errors.email?.type === 'required' || errors.email?.type === 'pattern') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150`}
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`}
                                 onChange={handleChange} 
                                 placeholder='Email Address' 
                             />
@@ -93,10 +93,10 @@ const Register = () => {
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
                             <input 
                                 {...RegisterField('username', { maxLength:50, required: true })} 
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm 
-                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm 
+                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500
                                     ${errors.username?.type === 'required' ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150`}
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`}
                                 onChange={handleChange} 
                                 placeholder='Username' 
                             />
@@ -104,10 +104,10 @@ const Register = () => {
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
                             <input
                                 {...RegisterField('reg_no', { minLength: 7, maxLength: 7, required: true })} 
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm 
-                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm 
+                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500
                                     ${(errors.reg_no?.type === 'required' || errors.reg_no?.type === 'minLength' || errors.reg_no?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150 `}  
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`}  
                                 onChange={handleChange} placeholder='Registration Number' 
                             />
                         </div>
@@ -115,10 +115,10 @@ const Register = () => {
                             <input
                                 type='number'
                                 {...RegisterField("level", { minLength: 3, maxLength: 3, required: true })} 
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm 
-                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm 
+                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500
                                     ${(errors.level?.type === 'required' || errors.level?.type === 'minLength' || errors.level?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                    transition ease-in-out delay-150  `} 
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`} 
                                 onChange={handleChange} 
                                 placeholder='Level'
                             />
@@ -126,24 +126,25 @@ const Register = () => {
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
                             <select 
                                 {...RegisterField('gender', { required: true })} 
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm 
-                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm 
+                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500
                                     ${errors.gender?.type === 'required' ? 'focus:border-red-200 focus:ring-red-400' : '' }
-                                    transition ease-in-out delay-150`} 
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`} 
                                 onChange={handleChange}
                             >
-                                <option value=''>Gender</option>
-                                <option value='m'>Male</option>
-                                <option value='f'>Female</option>
+                                <option className='dark:bg-app-dark-opacity' value=''>Gender</option>
+                                <option className='dark:bg-app-dark-opacity' value='m'>Male</option>
+                                <option className='dark:bg-app-dark-opacity' value='f'>Female</option>
                             </select>
                         </div>
                         <div className='form-sect mb-7 md:mb-3 lg:mb-5'>
                             <input 
                                 type='password' 
                                 {...RegisterField("password", { maxLength: 255, required: true })} 
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm 
-                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 
-                                    transition ease-in-out delay-150  ${(errors.password?.type === 'required' || errors.level?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' } `} 
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm 
+                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500
+                                    ${(errors.password?.type === 'required' || errors.level?.type === 'maxLength') ? 'focus:border-red-200 focus:ring-red-400' : '' }
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`} 
                                 onChange={handleChange} 
                                 placeholder='Password'
                             />
@@ -152,9 +153,10 @@ const Register = () => {
                             <input 
                                 type='password' 
                                 {...RegisterField("confirm_password", { maxLength: 255, required: true })} 
-                                className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm 
-                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 
-                                    transition ease-in-out delay-150  ${errors.confirm_password?.type === 'required' ? 'focus:border-red-200 focus:ring-red-400' : '' } `} 
+                                className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm 
+                                    focus:border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500
+                                    ${errors.confirm_password?.type === 'required' ? 'focus:border-red-200 focus:ring-red-400' : '' }
+                                    transition ease-in-out delay-150 dark:bg-transparent dark:text-white`} 
                                 onChange={handleChange} 
                                 placeholder='Confirm Password'
                             />
@@ -166,7 +168,7 @@ const Register = () => {
                         >
                             {isLoading ? 'Submitting' : 'Register'}
                         </button>
-                        <p className='text-center mt-7 md:mt-3 lg:mt-6'>Already Registered? <Link to='/login' className='text-app-green hover:text-app-green'>Sign In</Link></p>
+                        <p className='text-center mt-7 md:mt-3 lg:mt-6 dark:text-white'>Already Registered? <Link to='/login' className='text-app-green hover:text-app-green'>Sign In</Link></p>
                     </form>
                 </div>
             </div>

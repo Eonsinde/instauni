@@ -11,7 +11,7 @@ import loginImg from '../assets/images/login.png';
 
 const Login = () => {
     useEffect(() => {  
-        document.title = `InstaLife | Login`
+        document.title = `InstaLife | Login`;
     }, []);
 
     let [formData, setFormData] = useState({
@@ -62,11 +62,11 @@ const Login = () => {
             <>
             <header style={{height: '18vh'}} className="">
                 <div className='container h-full mx-auto flex justify-center items-center relative'>
-                    <Link to='/' className='text-gray-800 md:text-5xl text-4xl font-semibold hover:text-gray-800'>Insta<span className="text-app-green">life</span></Link>
+                    <Link to='/' className='text-gray-800 md:text-5xl text-4xl font-semibold hover:text-gray-800 dark:text-white'>Insta<span className="text-app-green">life</span></Link>
                 </div>
             </header>
-            <section className='py-28'>
-                <div className='container flex justify-center items-center mx-auto h-96'>
+            <section style={{height: '82vh'}} className='py-28'>
+                <div className='container flex justify-center items-center m-auto h-3/4'>
                     <div className='hidden md:block md:px-3 md:basis-1/2'>
                         <img className="mx-auto" src={loginImg} alt="" width={'100%'} height={'100%'} />
                     </div>
@@ -77,9 +77,10 @@ const Login = () => {
                                     type='text' 
                                     {...RegisterField("username", {required: true, maxLength: 50})} 
                                     onChange={handleChange} 
-                                    className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
-                                            focus:ring-4 focus:ring-gray-200  ${errors.username?.type === 'required' ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                            transition ease-in-out delay-150`} 
+                                    className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm focus:border-gray-200 
+                                            focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500  
+                                            ${errors.username?.type === 'required' ? 'focus:border-red-200 focus:ring-red-400' : '' } 
+                                            transition ease-in-out delay-150 dark:bg-transparent dark:text-white`} 
                                     placeholder='Username'  
                                 />
                             </div>
@@ -88,9 +89,10 @@ const Login = () => {
                                     type='password' 
                                     {...RegisterField("password", { required: true, maxLength: 255 })} 
                                     onChange={handleChange} 
-                                    className={`p-3 w-full border-solid border-2 border-gray-500 rounded-md shadow-sm focus:border-gray-200 
-                                            focus:ring-4 focus:ring-gray-200  ${errors.password?.type === 'required' ? 'focus:border-red-200 focus:ring-red-400' : '' } 
-                                            transition ease-in-out delay-150`} 
+                                    className={`p-3 w-full border-solid border-2 border-gray-500 dark:border-white rounded-md shadow-sm focus:border-gray-200 
+                                            focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-500  
+                                            ${errors.password?.type === 'required' ? 'focus:border-red-200 focus:ring-red-400' : '' } 
+                                            transition ease-in-out delay-150 dark:bg-transparent dark:text-white`} 
                                     placeholder='Password'
                                 />
                             </div>
@@ -101,7 +103,7 @@ const Login = () => {
                             >
                                 {isLoading ? 'Submitting' : 'Login'}
                             </button>
-                            <p className='text-center mt-7 md:mt-3 lg:mt-6'>Don't have an account? <Link to='/register' className='text-app-green hover:text-app-green'>Sign Up</Link></p>
+                            <p className='text-center mt-7 md:mt-3 lg:mt-6 dark:text-white'>Don't have an account? <Link to='/register' className='text-app-green hover:text-app-green'>Sign Up</Link></p>
                         </form>
                     </div>
                 </div>
