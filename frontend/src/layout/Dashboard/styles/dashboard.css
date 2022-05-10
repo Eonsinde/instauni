@@ -1,0 +1,30 @@
+.ant-modal-header{
+    background: white;
+    border-bottom-color: white;
+}
+
+html.dark .ant-modal-header{
+    background: rgb(27, 27, 27);
+    border-bottom-color: rgb(27, 27, 27);
+}
+
+.ant-modal-title{
+    font-size: 1.125rem;
+    color: #111;
+}
+
+
+html.dark .ant-modal-title{
+    font-size: 1.125rem;
+    color: #fff;
+}
+
+.ant-modal-close-icon{
+    font-size: 1.125rem;
+    color: #111;
+}
+
+html.dark .ant-modal-close-icon{
+    font-size: 1.125rem;
+    color: #fff;
+}
