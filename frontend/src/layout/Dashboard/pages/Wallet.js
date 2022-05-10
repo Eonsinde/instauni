@@ -12,15 +12,15 @@ const Wallet = () => {
         <div className='wallect-section flex flex-col space-y-10'>
            <div className='wallet-header'>
                 <header className='flex justify-between align-center mb-4'>
-                    <p>Balance</p>
-                    <Link to='#' className='text-green-500'>Fund Account</Link>
+                    <p className='dark:text-white'>Balance</p>
+                    <Link to='#' className='text-app-green hover:text-app-green'>Fund Account</Link>
                 </header>
-                <h2 className='text-3xl'>P. 3550 (#3550)</h2>
+                <h2 className='text-3xl dark:text-white'>P. 3550 (#3550)</h2>
            </div>
            <div className='wallet-body'>
                 <header className='flex justify-between align-center mb-4'>
                     <p>Recents</p>
-                    <Link to='#' className='text-green-500'>View More</Link>
+                    <Link to='#' className='text-app-green hover:text-app-green'>View More</Link>
                 </header>
                 <table className="table-auto mt-5 mb-7 w-full">
                     <tbody>
@@ -50,7 +50,7 @@ const Wallet = () => {
                         </tr>
                     </tbody>
                 </table>
-                <Link to='#' className='text-green-500 inline'>Get Free Money</Link>
+                <Link to='#' className='text-app-green hover:text-app-green inline'>Get Free Money</Link>
            </div>
         </div>
     );
