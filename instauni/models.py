@@ -85,12 +85,11 @@ class AcceptedTaskList(models.Model):
 class Contact(models.Model):
     full_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=80)
-    title = models.CharField(max_length=100)
     message = models.TextField(max_length=450)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.email} - {self.title[:15]}...'
+        return f'{self.email} - {self.message[:20]}...'
 
     class Meta:
         ordering = ['-created_at']
