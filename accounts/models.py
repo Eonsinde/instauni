@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 # Create your models here.
 
 
-def handle_prof_img_upload(instance, filename):
+def handle_prof_img_upload(instance, filename): # instance should be user ID here 
     return '/'.join(['profile_images', str(instance), filename])
 
 
