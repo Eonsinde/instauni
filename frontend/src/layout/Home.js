@@ -28,7 +28,7 @@ const Home = () => {
     }, []);
 
     return (
-        <main className='home-wrapper dark:bg-app-dark'> 
+        <> 
         <section className='showcase-section container mx-auto h-82vh flex md:flex-row justify-center items-center flex-col-reverse px-5'>
             <div className='showcase-text text-gray-800 basis-1/2 space-y-6 mt-10 md:mt-0 md:text-left text-center'>
                 <h1 className='font-bold lg:text-5xl text-4xl dark:text-white'>Make your life easier<br /> and softer</h1>
@@ -100,7 +100,7 @@ const Home = () => {
                     <h1 className='font-bold lg:text-5xl text-4xl mb-8 dark:text-white'>FAQs</h1>
                     <p className='text-lg dark:text-slate-200'>Have question? We are here to help</p>
                     <form className='mt-4'>
-                        <div className='border-2 rounded-md border-border-dark py-2 xl:w-3/12 lg:w-2/6 md:w-5/12 sm:w-3/5 w-3/4 mx-auto flex justify-between items-center'>
+                        <div className='border-2 rounded-md border-border-dark dark:border-white py-2 xl:w-3/12 lg:w-2/6 md:w-5/12 sm:w-3/5 w-3/4 mx-auto flex justify-between items-center'>
                             <label className='text-3xl basis-1/5 flex justify-center items-center px-2'><FcSearch /></label>
                             <input type='text' className='text-lg basis-4/5 outline-none pr-3 dark:bg-transparent dark:text-white' placeholder='Search' />
                         </div>
@@ -141,7 +141,7 @@ const Home = () => {
             </div>
             <p className='text-lg dark:text-white'>&copy; 2022 Instalife</p>
         </footer>
-        </main>
+        </>
     );
 }
  
