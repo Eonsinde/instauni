@@ -67,9 +67,9 @@ const NavDropItem = ({setDropdownOpen, dropdownOpen, dropdownMenu}) => {
 
 const DropdownMenu = forwardRef((props, ref) => {
     const dispatch = useDispatch();
-    const { user } = useAuth();
+    const { user, appTheme, setAppTheme } = useAuth();
 
-    const [appTheme, setAppTheme] = useState('');
+    // const [appTheme, setAppTheme] = useState(localStorage.theme ? localStorage.theme : '');
     const [hasProfilePics, setHasProfilePics] = useState(null);
     const [activeMenu, setActiveMenu] = useState('main'); // settings, animals
     const [menuHeight, setMenuHeight] = useState(null);
@@ -104,15 +104,6 @@ const DropdownMenu = forwardRef((props, ref) => {
         localStorage.theme = 'light';
       }
     }
-
-    useEffect(() => {
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-      } else {
-          document.documentElement.classList.remove('dark');
-      }
-    }, [appTheme]);
 
     // to create dropdown headers
     const DropdownHeader = (props) => {
@@ -239,8 +230,7 @@ const DropdownMenu = forwardRef((props, ref) => {
                 <form className='app-theme-form' onSubmit={e => e.preventDefault()}>
                   <div className='app-theme-form-sect'>
                     <label>On/Off</label>
-                    {/* <input type='checkbox' onChange={handleChangeAppTheme} /> */}
-                    <Switch onChange={onChangeAppTheme} />
+                    <Switch defaultChecked={(localStorage.theme === 'dark') ? true : false} onChange={onChangeAppTheme} />
                   </div>
                 </form>
               </div>
