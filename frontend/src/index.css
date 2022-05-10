@@ -25,6 +25,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.125rem/* 18px */;
   line-height: 1.75rem/* 28px */;
+  /* bakground: white; */
+  /* background: rgb(22, 22, 22); */
+  /* background: rgb(27, 27, 27); */
+}
+
+html.dark body{
+  background: rgb(22, 22, 22);
 }
 
 code {
