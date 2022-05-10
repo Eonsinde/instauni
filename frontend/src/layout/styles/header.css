@@ -219,19 +219,31 @@ html.dark .dropdown-theme-item > a{
   
 .app-theme-form-sect{
   display: flex;
+  /* justify-content: space-between; */
   align-items: center;
   margin: 0.5rem 0;
   padding: 0.5rem 0.5rem;
   border-radius: var(--border-radius);
 }
+
+.app-theme-form-sect > button{
+  margin-left: auto;
+  background-color: #ccc;
+}
+
+.app-theme-form-sect > button.ant-switch-checked {
+  background-color: #1890ff;
+  /* background-color: #23B123; */
+}
   
-.app-theme-form-sect:hover{
+/* .app-theme-form-sect:hover{
   background: var(--bg-accent);
 }
-  
-.app-theme-form-sect > input{
-  margin-left: auto;
+
+html.dark .app-theme-form-sect:hover{
+  background: rgba(255, 255, 255, 0.178);
 }
+  */
   
   
 /* a casual dropdown-item */
