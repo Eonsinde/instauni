@@ -22,7 +22,8 @@ export const ProfileImageLoader = () => {
         <figure className='flex flex-col justify-center items-center space-y-3 mb-8 md:mb-0'>
             {
             
-                <div className='bg-gray-200 p-24 rounded-full animate-pulse'></div>
+                <div style={{height:'250px', width: '250px'}} className='bg-gray-200 rounded-full animate-pulse'></div>
+                
             }
             <div className='bg-gray-200 h-6 w-24 animate-pulse rounded mb-6'></div>
         </figure>
