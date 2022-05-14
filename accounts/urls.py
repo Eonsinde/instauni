@@ -6,8 +6,11 @@ from accounts.api import *
 
 
 urlpatterns = [
-    path('api/auth/user/<int:pk>/', UserAPI.as_view()),
     path('api/auth/register', RegisterAPI.as_view()),
+    path('api/auth/user/<int:pk>/', UserAPI.as_view()),
+    path('api/auth/user/<int:pk>/update-profile', UpdateUserAPI.as_view()),
+    path('api/auth/user/<int:pk>/delete-profile', DeleteUserAPI.as_view()),
+    
     path('api/auth/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
