@@ -2,9 +2,11 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { Navigate, useLocation,  } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateToken, reset } from '../reducers/auth/authSlice'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { toast } from 'react-toastify';
 
 
+const queryClient = new QueryClient();
 export const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -18,6 +20,14 @@ const AuthProvider = ({ children }) => {
     const [appTheme, setAppTheme] = useState(localStorage.theme ? localStorage.theme : '');
     
     useEffect(() => {
+        // this should run once, when a user enters the site freshly
+        // if auth token still in localStorage, update it
+        if (auth_tokens !== null)
+            dispatch(updateToken(null));
+    }, []);
+
+    useEffect(() => {
+        // for authentication
         if (tokenRefreshError){
             toast.error(`${message}`);
             dispatch(reset());
@@ -56,7 +66,9 @@ const AuthProvider = ({ children }) => {
 
     return ( 
         <AuthContext.Provider value={contextData}>
-            { children }            
+            <QueryClientProvider client={queryClient}>
+                { children }            
+            </QueryClientProvider>
         </AuthContext.Provider>
     );
 }
