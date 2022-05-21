@@ -3,7 +3,8 @@
     height: 82vh;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 1rem;
+    padding: .5rem 0;
+    padding-right: .5rem;
 }
 
 
