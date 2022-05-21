@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 import { ProtectedView } from '../context/AuthContext';
@@ -21,11 +21,13 @@ const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
 
 
 const BaseView = () => {
+    const location = useLocation();
+
     return ( 
         <>
             <Header />
             <AnimatePresence exitBeforeEnter>
-                <Routes>
+                <Routes location={location} key={location.pathname}>
                     <Route path="/" element={<Home />} />
                     <Route path="home" element={
                         <React.Suspense fallback={<PageLoader />}>
