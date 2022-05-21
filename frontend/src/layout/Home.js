@@ -136,7 +136,7 @@ const Home = () => {
             <div className='flex items-center justify-center space-x-16 py-12'>
                 <Link to='#' className='h-16 w-16 rounded-full flex justify-center items-center bg-white dark:bg-app-dark text-4xl text-blue-400 hover:text-blue-400'><BsTwitter /></Link>
                 <Link to='#' className='h-16 w-16 rounded-full flex justify-center items-center bg-white dark:bg-app-dark text-4xl text-blue-400'>
-                    <img src={igLogo} alt='Page Not Found Img' width={'55%'} height={'55%'} />
+                    <img src={igLogo} alt='IG Img' width={'55%'} height={'55%'} />
                 </Link>
             </div>
             <p className='text-lg dark:text-white'>&copy; 2022 Instalife</p>
