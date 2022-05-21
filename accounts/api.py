@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-import datetime, jwt
 from accounts.models import CustomUser
 from accounts.serializers import *
 
@@ -25,6 +24,16 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
+class RegisterAPI(generics.CreateAPIView):
+    serializer_class = RegisterSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response(data={"message": "success"}, status=status.HTTP_201_CREATED)
+
+
 class UserAPI(generics.RetrieveAPIView):
     permission_classes = [
         permissions.IsAuthenticated
@@ -34,22 +43,26 @@ class UserAPI(generics.RetrieveAPIView):
     queryset = CustomUser.objects.all()
     lookup_fields = 'id'
 
-    # def get_object(self):
-    #     user = CustomUser.objects.get(username=self.)
-    #     return Response(
-    #         UserSerializer(user).data
-    #     )
-    #     return self.request.user
+
+class UpdateUserAPI(generics.UpdateAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated 
+    ]
+
+    serializer_class = UserSerializer
+    queryset = CustomUser.objects.all()
+    lookup_fields = 'id'
 
 
-class RegisterAPI(generics.CreateAPIView):
-    serializer_class = RegisterSerializer
+class DeleteUserAPI(generics.DestroyAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated 
+    ]
 
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        return Response(data={"message": "success"}, status=status.HTTP_201_CREATED)
+    serializer_class = UserSerializer
+    queryset = CustomUser.objects.all()
+    lookup_fields = 'id'
+
 
 
 
